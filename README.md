@@ -146,3 +146,11 @@ Se preferir compilar manualmente (sem CMake), use:
 ```bash
 gcc src/main.c src/max_heap/max_heap.c src/min_heap/min_heap.c src/heapsort/heapsort.c -Isrc -o programa_hospital
 ```
+
+## Colaboradores 👥
+
+Este projeto foi desenvolvido por:
+
+- João Paulo Lopes
+- Thalysson Delano
+- Álvaro Pietro
