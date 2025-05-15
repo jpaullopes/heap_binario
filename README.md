@@ -151,6 +151,7 @@ gcc src/main.c src/max_heap/max_heap.c src/min_heap/min_heap.c src/heapsort/heap
 
 Este projeto foi desenvolvido por:
 
-- João Paulo Lopes
-- Thalysson Delano
 - Álvaro Pietro
+- João Paulo Lopes
+- Kaio Gabriel
+- Thalysson Delano
