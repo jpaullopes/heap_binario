@@ -54,4 +54,23 @@ int maxHeapVazia(MaxHeap *heap);
  */
 void liberarMaxHeap(MaxHeap *heap);
 
+/**
+ * @brief Troca dois Pacientes de lugar.
+ * Função utilitária que pode ser usada externamente.
+ * @param a Ponteiro para o primeiro Paciente.
+ * @param b Ponteiro para o segundo Paciente.
+ */
+void trocarPacientes(Paciente *a, Paciente *b);
+
+/**
+ * @brief Restaura a propriedade de Max-Heap para uma subárvore representada
+ * em um array, com raiz em 'i'.
+ * Usada pelo Heapsort e pode ser útil para outras manipulações de array como heap.
+ *
+ * @param array O array de Pacientes.
+ * @param n O tamanho da porção do array considerada como heap.
+ * @param i O índice da raiz da subárvore a ser "heapificada".
+ */
+void heapifyDownMaxArray(Paciente array[], int n, int i);
+
 #endif // MAX_HEAP_H
