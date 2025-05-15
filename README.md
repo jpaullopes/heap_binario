@@ -1,4 +1,4 @@
-# 🏥 Projeto de Implementação de Heap: Fila de Prioridade Hospitalar 🏥
+# Projeto de Implementação de Heap: Fila de Prioridade Hospitalar 🏥
 
 ## Descrição 📝
 
@@ -7,120 +7,142 @@ Este projeto consiste na implementação das estruturas de dados Max-Heap e Min-
 ## Estrutura de Dados: Heap Binária 🌳
 
 Uma **Heap Binária** é uma estrutura de dados baseada em árvore binária completa que satisfaz a propriedade da heap:
-*   **Max-Heap:** O valor de cada nó pai é maior ou igual aos valores de seus filhos. O maior elemento está sempre na raiz.
-*   **Min-Heap:** O valor de cada nó pai é menor ou igual aos valores de seus filhos. O menor elemento está sempre na raiz.
+
+* **Max-Heap:** O valor de cada nó pai é maior ou igual aos valores de seus filhos. O maior elemento está sempre na raiz.
+* **Min-Heap:** O valor de cada nó pai é menor ou igual aos valores de seus filhos. O menor elemento está sempre na raiz.
 
 Nesta implementação, a heap é representada utilizando um array para maior eficiência de acesso e manipulação dos elementos, seguindo a abordagem padrão.
 
 ## Funcionalidades Implementadas ✅
 
-O projeto inclui módulos separados para Max-Heap e Min-Heap, cada um com as seguintes funcionalidades:
+O projeto inclui módulos separados para Max-Heap e Min-Heap, além de uma estrutura comum para os pacientes e um algoritmo de ordenação Heapsort.
 
-### Paciente 👨‍⚕️
-Uma estrutura `Paciente` é definida para armazenar os dados relevantes:
+### Paciente (`paciente.h`) 👨‍⚕️
 
-*   `id`: Identificador único do paciente.
-*   `prioridade`: Valor numérico que define a urgência ou ordem de atendimento.
+Uma estrutura `Paciente` é definida no arquivo `paciente.h` para armazenar os dados relevantes. Este arquivo é incluído pelos módulos de heap e heapsort.
 
 ```c
+// Definição em paciente.h
 typedef struct {
     int id;
     int prioridade;
 } Paciente;
 ```
 
-### Max-Heap (max\_heap.h, max\_heap.c) ⬆️
+### Max-Heap (`max_heap.h`, `max_heap.c`) ⬆️
 
 Ideal para cenários onde o maior valor de prioridade deve ser atendido primeiro.
 
-*   `criarMaxHeap(capacidade)`: Aloca e inicializa uma nova Max-Heap.
-*   `inserirPacienteMax(heap, paciente)`: Insere um novo paciente na heap, mantendo a propriedade de Max-Heap.
-*   `extrairMaxPacienteHeap(heap)`: Remove e retorna o paciente com a maior prioridade.
-*   `maxHeapVazia(heap)`: Verifica se a heap está vazia.
-*   `liberarMaxHeap(heap)`: Libera toda a memória alocada para a heap.
+* `criarMaxHeap(capacidade)`: Aloca e inicializa uma nova Max-Heap.
+* `inserirPacienteMax(heap, paciente)`: Insere um novo paciente na heap, mantendo a propriedade de Max-Heap.
+* `extrairMaxPacienteHeap(heap)`: Remove e retorna o paciente com a maior prioridade.
+* `maxHeapVazia(heap)`: Verifica se a heap está vazia.
+* `liberarMaxHeap(heap)`: Libera toda a memória alocada para a heap.
+* `trocarPacientes(pacienteA, pacienteB)`: Função utilitária (pública) para trocar dois pacientes.
+* `heapifyDownMaxArray(array, tamanho, indice)`: Função utilitária (pública) para aplicar o heapify down em um array.
 
-### Min-Heap (min\_heap.h, min\_heap.c) ⬇️
+### Min-Heap (`min_heap.h`, `min_heap.c`) 🔻
 
 Ideal para cenários onde o menor valor de prioridade deve ser atendido primeiro.
 
-*   `criarMinHeap(capacidade)`: Aloca e inicializa uma nova Min-Heap.
-*   `inserirPacienteMin(heap, paciente)`: Insere um novo paciente na heap, mantendo a propriedade de Min-Heap.
-*   `extrairMinPacienteHeap(heap)`: Remove e retorna o paciente com a menor prioridade.
-*   `minHeapVazia(heap)`: Verifica se a heap está vazia.
-*   `liberarMinHeap(heap)`: Libera toda a memória alocada para a heap.
+* `criarMinHeap(capacidade)`: Aloca e inicializa uma nova Min-Heap.
+* `inserirPacienteMin(heap, paciente)`: Insere um novo paciente na heap, mantendo a propriedade de Min-Heap.
+* `extrairMinPacienteHeap(heap)`: Remove e retorna o paciente com a menor prioridade.
+* `minHeapVazia(heap)`: Verifica se a heap está vazia.
+* `liberarMinHeap(heap)`: Libera toda a memória alocada para a heap.
 
-### Estrutura dos Arquivos 🗂️
+### Heapsort (`heapsort.h`, `heapsort.c`) 🔢
 
-O projeto está organizado nos seguintes arquivos:
+Ordenação em ordem crescente de prioridade.
 
-*   `max_heap.h`: Arquivo de cabeçalho para a implementação da Max-Heap. Contém as definições das estruturas e os protótipos das funções.
-*   `max_heap.c`: Arquivo de código fonte com a implementação das funções da Max-Heap.
-*   `min_heap.h`: Arquivo de cabeçalho para a implementação da Min-Heap.
-*   `min_heap.c`: Arquivo de código fonte com a implementação das funções da Min-Heap.
-*   `main.c` (Exemplo de uso): Um arquivo principal (não fornecido aqui, a ser criado pelo usuário) para demonstrar o uso das heaps no contexto da fila de hospital.
+* `heapsortPacientes(array, tamanho)`: Ordena um array de pacientes utilizando o algoritmo Heapsort (baseado em Max-Heap para ordenação ascendente).
+
+## Estrutura dos Arquivos 🗂️
+
+O projeto está organizado da seguinte forma:
+
+```
+heap_binario/
+│
+├── src/
+│   ├── includes/
+│   │   └── paciente.h
+│   ├── max_heap/
+│   │   ├── max_heap.h
+│   │   └── max_heap.c
+│   ├── min_heap/
+│   │   ├── min_heap.h
+│   │   └── min_heap.c
+│   ├── heapsort/
+│   │   ├── heapsort.h
+│   │   └── heapsort.c
+│   └── main.c
+│
+├── CMakeLists.txt
+└── README.md
+```
+
+- `src/includes/paciente.h`: Definição da estrutura `Paciente`.
+- `src/max_heap/`: Implementação da Max-Heap.
+- `src/min_heap/`: Implementação da Min-Heap.
+- `src/heapsort/`: Implementação do algoritmo Heapsort.
+- `src/main.c`: Arquivo principal com funções de teste e demonstração.
+- `CMakeLists.txt`: Script de build para o CMake.
 
 ## Contexto de Aplicação: Fila de Prioridade Hospitalar 🏥
 
 A principal aplicação demonstrada é a simulação de uma fila de atendimento em um hospital.
 
-*   **Usando Max-Heap:** Pacientes são inseridos com um nível de prioridade (ex: 1 a 10, onde 10 é mais urgente). A Max-Heap garante que o paciente com a maior prioridade seja sempre o próximo a ser chamado para atendimento.
-*   **Usando Min-Heap:** Poderia ser usado para um sistema onde a menor prioridade significa, por exemplo, "chegou mais cedo" em um grupo de pacientes com a mesma urgência médica, ou para gerenciar recursos com base no menor custo/tempo.
+* **Usando Max-Heap:** Pacientes com maior prioridade (ex: 1 a 100, onde 100 é mais urgente) são atendidos primeiro.
+* **Usando Min-Heap:** Para casos onde a menor prioridade representa menor tempo de espera ou chegada antecipada.
+* **Usando Heapsort:** Gera relatórios ordenados por prioridade a partir de dados de pacientes.
 
 ## Análise de Complexidade (Big O) ⏱️
 
-A eficiência das operações da Heap Binária (tanto Max quanto Min) é uma de suas principais vantagens:
-
-*   **Inserção** (`inserirPacienteMax`, `inserirPacienteMin`): O(log n)
-
-    O novo elemento é adicionado ao final do array (folha mais à direita) e, no pior caso, "sobe" até a raiz através da operação `heapifyUp`. A altura de uma heap binária completa com n elementos é O(log n).
-*   **Extração do Máximo/Mínimo** (`extrairMaxPacienteHeap`, `extrairMinPacienteHeap`): O(log n)
-
-    O elemento da raiz é removido. O último elemento da heap é movido para a raiz e, no pior caso, "desce" até uma posição de folha através da operação `heapifyDown`. Novamente, o número de operações é limitado pela altura da árvore.
-*   **Obter Máximo/Mínimo** (sem extrair): O(1)
-
-    O elemento de maior (Max-Heap) ou menor (Min-Heap) prioridade está sempre na raiz, permitindo acesso em tempo constante.
-*   **Criação da Heap** (a partir de um array desordenado - não implementado diretamente como uma função única aqui, mas pode ser feito em O(n)):
-
-    Embora inserir n elementos um a um resulte em O(n log n), existe um algoritmo (como o de Floyd, que aplica `heapifyDown` da metade dos elementos para baixo até a raiz) que constrói uma heap em tempo linear O(n).
+* Inserção em Heap: `O(log n)`
+* Extração do máximo/mínimo: `O(log n)`
+* Obter máximo/mínimo: `O(1)`
+* Construção de Heap: `O(n)`
+* Heapsort: `O(n log n)` em todos os casos
 
 ## Como Compilar e Executar ⚙️
 
-Para compilar o projeto, você precisará de um compilador C (como o GCC). Crie um arquivo `main.c` que inclua `max_heap.h` e/ou `min_heap.h` e utilize as funções implementadas.
+### Usando CMake (Recomendado)
 
-Exemplo de compilação (com GCC):
+1. Crie um diretório para build (fora da pasta `src`):
 
-Se você tiver um `main.c` que usa a Max-Heap:
+   ```bash
+   mkdir build
+   cd build
+   ```
+
+2. Gere os arquivos de build com o CMake:
+
+   ```bash
+   cmake ..
+   ```
+
+3. Compile o projeto:
+
+   ```bash
+   cmake --build .
+   ```
+
+4. Execute o programa:
+
+   - No Linux/macOS:
+     ```bash
+     ./programa_hospital
+     ```
+   - No Windows:
+     ```cmd
+     programa_hospital.exe
+     ```
+
+### Compilação Manual (Alternativa)
+
+Se preferir compilar manualmente (sem CMake), use:
 
 ```bash
-gcc main.c max_heap.c -o programa_hospital_max
-./programa_hospital_max
+gcc src/main.c src/max_heap/max_heap.c src/min_heap/min_heap.c src/heapsort/heapsort.c -Isrc -o programa_hospital
 ```
-
-Se você tiver um `main.c` que usa a Min-Heap:
-
-```bash
-gcc main.c min_heap.c -o programa_hospital_min
-./programa_hospital_min
-```
-
-Se o `main.c` utilizar ambas:
-
-```bash
-gcc main.c max_heap.c min_heap.c -o programa_hospital_completo
-./programa_hospital_completo
-```
-
-## Possíveis Melhorias e Próximos Passos 🚀
-
-*   **Redimensionamento Dinâmico:** Implementar a capacidade da heap de crescer dinamicamente caso o número de elementos exceda a capacidade inicial (usando `realloc`).
-*   **Função construirHeap (Build Heap):** Adicionar uma função que receba um array de pacientes desordenado e o transforme em uma heap eficiente (em tempo O(n)).
-*   **Interface de Usuário Mais Robusta:** Desenvolver um `main.c` com um menu interativo para simular a chegada de pacientes, visualização da fila e atendimento.
-*   **Critérios de Prioridade Múltiplos:** Expandir a `struct Paciente` e a lógica de prioridade para considerar múltiplos fatores (ex: idade, condição crônica, tempo de espera) na definição da prioridade final.
-*   **Testes Unitários:** Criar um conjunto de testes para garantir a corretude de todas as funções da heap.
-*   **Documentação Doxygen:** Gerar documentação HTML a partir dos comentários do código usando Doxygen.
-
-## Autor 👨‍💻
-
-João Paulo
-
-(Este projeto foi desenvolvido como parte dos estudos em Estruturas de Dados.)
