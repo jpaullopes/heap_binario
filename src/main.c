@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h> // Para EXIT_SUCCESS
+#include <stdlib.h> 
 
 #include "max_heap/max_heap.h" 
 #include "min_heap/min_heap.h" 

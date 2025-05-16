@@ -1,5 +1,7 @@
 {
     "files.associations": {
         "heapsort.h": "c"
-    }
+    },
+    "files.autoSave": "afterDelay",
+    "editor.fontSize": 16
 }
